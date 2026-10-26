@@ -402,11 +402,12 @@
             <img src="Untitled_design-removebg-preview.png" alt="BERDIKARI Logo" class="logo-img">
             <span class="brand-name">BERDIKARI</span>
         </div>
-            <ul class="nav-links">
+          <ul class="nav-links">
                 <li><a href="#tentang">Tentang</a></li>
                 <li><a href="#marketplace">Marketplace</a></li>
                 <li><a href="#hub">Berdikari Hub</a></li>
                 <li><a href="#mitra">Mitra & Yayasan</a></li>
+                <li><a href="#kontak">Kontak</a></li>
             </ul>
         </nav>
     </header>
@@ -525,6 +526,35 @@
 
     </div>
 
+    <!-- 6. KONTAK & MEDIA SOSIAL -->
+        <h2 class="section-title" id="kontak"><i class="fa-solid fa-address-book"></i> Hubungi Kami</h2>
+        <div class="hub-container" style="text-align: center;">
+            <p>Punya pertanyaan, ingin berkolaborasi, atau mendaftarkan produk UMKM disabilitas? Hubungi kami melalui:</p>
+            
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
+                <!-- WhatsApp / Kontak -->
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; width: 260px;">
+                    <i class="fa-brands fa-whatsapp fa-2x" style="color: #25D366;"></i>
+                    <h4 style="margin-top: 10px;">WhatsApp / Contact</h4>
+                    <p style="font-size: 0.9rem; color: #64748B; margin-top: 5px;"> 087814801940</p>
+                </div>
+
+                <!-- Email -->
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; width: 260px;">
+                    <i class="fa-solid fa-envelope fa-2x" style="color: var(--accent-blue);"></i>
+                    <h4 style="margin-top: 10px;">Email Resmi</h4>
+                    <p style="font-size: 0.85rem; color: #64748B; margin-top: 5px; word-break: break-all;">infoberdikariindonesia@gmail.com</p>
+                </div>
+
+                <!-- Instagram -->
+                <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; width: 260px;">
+                    <i class="fa-brands fa-instagram fa-2x" style="color: #E1306C;"></i>
+                    <h4 style="margin-top: 10px;">Instagram</h4>
+                    <p style="font-size: 0.9rem; color: #64748B; margin-top: 5px;">@berdikari.web</p>
+                </div>
+            </div>
+        </div>
+    
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
@@ -566,15 +596,13 @@
         }
 
         // 3. Fitur Pembaca Suara (Text to Speech)
-        function speakPage() {
-            if ('speechSynthesis' in window) {
-                const text = "Selamat datang di Berdikari. Marketplace inklusif sebagai media pengembangan U M K M lokal melalui komersialisasi karya berbasis potensi disabilitas.";
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'id-ID';
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Fitur pembaca suara tidak didukung di browser ini.");
-            }
+       function speakPage() {
+    if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance("Selamat datang di Berdikari. Marketplace inklusif pengembangan UMKM disabilitas.");
+        utterance.lang = 'id-ID'; // <-- Ini sudah Bahasa Indonesia
+        window.speechSynthesis.speak(utterance);
+    }
+}
         }
 
         // 4. Kalkulator Harga Jual (COGS) di Berdikari Hub

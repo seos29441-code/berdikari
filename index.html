@@ -390,7 +390,7 @@
         <div class="acc-btn-group">
             <button onclick="speakPage()" aria-label="Dengarkan Suara"><i class="fa-solid fa-volume-high"></i> Baca Suara</button>
             <button onclick="changeFontSize(1)" aria-label="Perbesar Teks">A+</button>
-            <button onclick="changeFontSize(-1)" aria-label="Permungcil Teks">A-</button>
+            <button onclick="changeFontSize(-1)" aria-label="Perkecil Teks">A-</button>
             <button onclick="toggleContrast()" aria-label="Ubah Kontras Tinggi"><i class="fa-solid fa-circle-half-stroke"></i> Kontras</button>
         </div>
     </div>
@@ -478,7 +478,6 @@
 
         </div>
 
-        <!-- 4. PUSAT INKUBASI & PENGEMBANGAN UMKM (BERDIKARI HUB) -->
      <!-- 4. PUSAT INKUBASI & PENGEMBANGAN UMKM (BERDIKARI HUB) -->
         <h2 class="section-title" id="hub"><i class="fa-solid fa-chart-line"></i> Berdikari Hub (Pusat Inkubasi)</h2>
         <div class="hub-container">
@@ -525,19 +524,17 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- 6. KONTAK & MEDIA SOSIAL -->
+        <!-- 6. KONTAK & MEDIA SOSIAL -->
         <h2 class="section-title" id="kontak"><i class="fa-solid fa-address-book"></i> Hubungi Kami</h2>
         <div class="hub-container" style="text-align: center;">
             <p>Punya pertanyaan, ingin berkolaborasi, atau mendaftarkan produk UMKM disabilitas? Hubungi kami melalui:</p>
-            
+
             <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
                 <!-- WhatsApp / Kontak -->
                 <div style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; width: 260px;">
                     <i class="fa-brands fa-whatsapp fa-2x" style="color: #25D366;"></i>
                     <h4 style="margin-top: 10px;">WhatsApp / Contact</h4>
-                    <p style="font-size: 0.9rem; color: #64748B; margin-top: 5px;"> 087814801940</p>
+                    <p style="font-size: 0.9rem; color: #64748B; margin-top: 5px;">087814801940</p>
                 </div>
 
                 <!-- Email -->
@@ -555,6 +552,8 @@
                 </div>
             </div>
         </div>
+
+    </div> <!-- penutup .container, sekarang di sini -->
     
     <!-- FOOTER -->
     <footer>
@@ -596,14 +595,28 @@
             document.body.classList.toggle('high-contrast');
         }
 
-       // 3. Fitur Pembaca Suara (Text to Speech)
-        function speakPage() {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance("Selamat datang di Berdikari. Marketplace inklusif pengembangan UMKM disabilitas.");
-                utterance.lang = 'id-ID'; // Menggunakan Bahasa Indonesia
-                window.speechSynthesis.speak(utterance);
-            }
-        }
+      // 3. Fitur Pembaca Suara (Text to Speech)
+function speakPage() {
+    if (!('speechSynthesis' in window)) {
+        alert('Browser kamu tidak mendukung fitur baca suara.');
+        return;
+    }
+
+    // Kalau sedang membaca, klik lagi untuk berhenti
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        return;
+    }
+
+    // Ambil teks dari bagian hero dan konten utama
+    const teks = document.querySelector('.hero').innerText + '. ' +
+                 document.querySelector('.container').innerText;
+
+    const utterance = new SpeechSynthesisUtterance(teks);
+    utterance.lang = 'id-ID';
+    utterance.rate = 0.95;
+    window.speechSynthesis.speak(utterance);
+}
 
         // 4. Kalkulator Harga Jual (COGS) di Berdikari Hub
         function hitungHargaJual() {
@@ -619,3 +632,6 @@
             const hargaJual = modal + (modal * (margin / 100));
             resultDiv.innerHTML = `Rekomendasi Harga Jual: <strong>Rp ${hargaJual.toLocaleString('id-ID')}</strong>`;
         }
+    </script>
+</body>
+</html>

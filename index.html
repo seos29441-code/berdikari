@@ -595,14 +595,13 @@
             document.body.classList.toggle('high-contrast');
         }
 
-        // 3. Fitur Pembaca Suara (Text to Speech)
-       function speakPage() {
-    if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance("Selamat datang di Berdikari. Marketplace inklusif pengembangan UMKM disabilitas.");
-        utterance.lang = 'id-ID'; // <-- Ini sudah Bahasa Indonesia
-        window.speechSynthesis.speak(utterance);
-    }
-}
+       // 3. Fitur Pembaca Suara (Text to Speech)
+        function speakPage() {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance("Selamat datang di Berdikari. Marketplace inklusif pengembangan UMKM disabilitas.");
+                utterance.lang = 'id-ID'; // Menggunakan Bahasa Indonesia
+                window.speechSynthesis.speak(utterance);
+            }
         }
 
         // 4. Kalkulator Harga Jual (COGS) di Berdikari Hub
@@ -619,6 +618,3 @@
             const hargaJual = modal + (modal * (margin / 100));
             resultDiv.innerHTML = `Rekomendasi Harga Jual: <strong>Rp ${hargaJual.toLocaleString('id-ID')}</strong>`;
         }
-    </script>
-</body>
-</html>
